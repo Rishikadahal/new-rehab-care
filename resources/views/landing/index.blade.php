@@ -15,6 +15,7 @@
 <body>
 
     <header class="header">
+
         <img src="{{asset('images/logo.png')}}" id="logo" alt="">
 
         <nav class="navbar">
@@ -30,8 +31,8 @@
     <div class="background-image">
         <div class="background-content">
             <h1>Recovery begins with <br>a single step</h1>
-            <p>we believe that every small effort towards  healing <br>is a significant stride on the path to recovery. </p>
-            <a href="#">Read more</a>
+            <p>we believe that every small effort towards healing <br>is a significant stride on the path to recovery. </p>
+            <!-- <a href="#">Read more</a> -->
         </div>
     </div>
 
@@ -41,7 +42,7 @@
                 <div class="about-content">
                     <h1>about us</h1>
                     <p>"We are a beacon of hope and healing at our rehab center. Committed to compassionate care and unwavering support, we empower individuals on their journey to recovery. With a dedicated team of professionals and personalized treatment plans, we stand by our mission to transform lives and inspire lasting change."</p>
-                    <a href="#">Read more</a>
+                    <!-- <a href="#">Read more</a> -->
                 </div>
 
             </div>
@@ -62,7 +63,7 @@
 
             <div class="right-service-content">
                 <div class="right-btn">
-                    <a href="#">See all services</a>
+                    <!-- <a href="#">See all services</a> -->
                 </div>
             </div>
         </div>
@@ -93,36 +94,6 @@
                 <h2>Appointment </h2>
                 <p>Our System Streamlines Appointment Scheduling For Staff And Automating Email Notifications, Ensuring Efficiency And Ease Of Use.</p>
 
-            </div>
-        </div>
-    </div>
-
-
-    <div class="gallery">
-        <h1>Gallery</h1>
-        <div class="main-gallery">
-            <div class="inner-gallery">
-                <img src="images/gal1.jpg" alt="">
-            </div>
-
-            <div class="inner-gallery">
-                <img src="images/gal2.jpg" alt="">
-            </div>
-
-            <div class="inner-gallery">
-                <img src="images/gal3.jpg" alt="">
-            </div>
-
-            <div class="inner-gallery">
-                <img src="images/gal4.jpg" alt="">
-            </div>
-
-            <div class="inner-gallery">
-                <img src="images/gal5.jpg" alt="">
-            </div>
-
-            <div class="inner-gallery">
-                <img src="images/gal6.jpg" alt="">
             </div>
         </div>
     </div>
@@ -180,32 +151,14 @@
         <div class="main-doctor">
             <div class="inner-doctor">
                 <img src="images/gal3.jpg" alt="">
-                <div class="doc-icons">
-                    <div class="fab fa-facebook"></div>
-                    <div class="fab fa-twitter"></div>
-                    <div class="fab fa-instagram"></div>
-                    <div class="fab fa-linkedin"></div>
-                </div>
             </div>
 
             <div class="inner-doctor">
                 <img src="images/gal2.jpg" alt="">
-                <div class="doc-icons">
-                    <div class="fab fa-facebook"></div>
-                    <div class="fab fa-twitter"></div>
-                    <div class="fab fa-instagram"></div>
-                    <div class="fab fa-linkedin"></div>
-                </div>
             </div>
 
             <div class="inner-doctor">
                 <img src="images/gal5.jpg" alt="">
-                <div class="doc-icons">
-                    <div class="fab fa-facebook"></div>
-                    <div class="fab fa-twitter"></div>
-                    <div class="fab fa-instagram"></div>
-                    <div class="fab fa-linkedin"></div>
-                </div>
             </div>
 
 
@@ -213,7 +166,7 @@
     </div>
 
     <div class="Review and ratings">
-      
+
 
         <?php
 
@@ -223,19 +176,20 @@
 
         ?>
         <div class="container">
-        <h1>Review and ratings</h1>
-        <hr/>
+            <h1 style="text-align: center; font-size: 40px; color:#005eff;">Review and ratings</h1>
             <div class="row gap-4">
                 @foreach($data as $d)
-                <div class="col-md-4 border my-3">
-                    <h2 class="text-primary mt-4">{{$d->message}}.</h2>
-                    <hr />
-                    <h4>Review by: {{$d->user->name}}</h4>
-                    <hr />
-                    <h4>Rating: @for($r=0; $r<$d->review; $r++ )🌟@endfor</h4>
-
+                <div class="card my-5" style="width: 400px;">
+                    <div class="card-body">
+                        <h5 class="card-title" style="font-size: 16px; color:#aaaaaa">Review by: {{$d->user->name}}</h5>
+                        <hr/>
+                        <h6 class="card-subtitle mb-2 text-muted" style="font-size: 18px; color:grey">{{$d->message}}.</h6>
+                        <hr/>
+                        <p class="card-text" style="font-size: 18px;">@for($r=0; $r<$d->review; $r++ )🌟@endfor</p>
+                    
+                    </div>
                 </div>
-
+              
                 @endforeach
             </div>
         </div>
@@ -267,10 +221,6 @@
             <div class="inner-footer">
                 <h2>Location</h2>
                 <a href="#">Damak Jhapa</a>
-                <a href="#"> </a>
-                <a href="#"> </a>
-                <a href="#"> </a>
-                <a href="#"> </a>
             </div>
         </div>
     </div>

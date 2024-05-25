@@ -39,7 +39,7 @@ class PatientActivityController extends AdminController
             $filter->where(function ($query) {
                 $query->whereHas('patient', function ($query) {
                     $query->where('name', 'like', "%{$this->input}%");
-                });
+                  });
             }, 'Patient Name');
 
         });

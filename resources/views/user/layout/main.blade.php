@@ -92,12 +92,20 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/logout" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group" onclick="confirmLogout(event)">
                         <button>
                             Logout
                         </button>
                     </a>
                 </li>
+                <script>
+                    function confirmLogout(event) {
+                        event.preventDefault();
+                        if (confirm("Are you sure you want to logout?")) {
+                            window.location.href = "/logout";
+                        }
+                    }
+                </script>
             </ul>
         </div>
     </aside>

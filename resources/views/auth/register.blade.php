@@ -1,6 +1,35 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+    .card-header {
+        background-color: #3498db; /* Blue color */
+        color: #fff; /* White text */
+        text-align: center; /* Center-align header text */
+        font-weight: bold; /* Bold header text */
+    }
+
+    .card-body {
+        background-color: #f5f5f5; /* Light gray background */
+    }
+
+    .form-control {
+        border-color: #3498db; /* Blue border */
+    }
+
+    .btn-primary {
+        background-color: #3498db; /* Blue button */
+        border-color: #3498db; /* Blue border */
+    }
+
+    .btn-primary:hover {
+        background-color: #2980b9; /* Darker blue on hover */
+        border-color: #2980b9; /* Darker blue border on hover */
+    }
+
+    /* You can adjust other styles as needed */
+</style>
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -61,9 +90,9 @@
                             </div>
                         </div>
 
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                        <div class="row mb-0 text-center">
+                            <div class="col-md-8 mx-auto">
+                                <button type="submit" class="btn btn-primary btn-block">
                                     {{ __('Register') }}
                                 </button>
                             </div>

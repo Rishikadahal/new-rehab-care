@@ -1,6 +1,41 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+    .card-header {
+        background-color: #3498db; /* Blue color */
+        color: #fff; /* White text */
+    }
+
+    .card-body {
+        background-color: #f5f5f5; /* Light gray background */
+    }
+
+    .form-control {
+        border-color: #3498db; /* Blue border */
+    }
+
+    .btn-primary {
+        background-color: #3498db; /* Blue button */
+        border-color: #3498db; /* Blue border */
+    }
+
+    .btn-primary:hover {
+        background-color: #2980b9; /* Darker blue on hover */
+        border-color: #2980b9; /* Darker blue border on hover */
+    }
+
+    .btn-white {
+        color: #3498db; /* Blue text */
+    }
+
+    .btn-white:hover {
+        color: #2980b9; /* Darker blue text on hover */
+    }
+
+    /* You can adjust other styles as needed */
+</style>
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -8,6 +43,8 @@
                 <div class="card-header">{{ __('Login') }}</div>
 
                 <div class="card-body">
+                    <h2 class="text-center mb-4">Login</h2>
+
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
@@ -62,6 +99,14 @@
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif
+                            </div>
+                        </div>
+
+                        <div class="row mb-3 mt-5">
+                            <label for="password" class="col-md-4 col-form-label text-md-end">OR</label>
+
+                            <div class="col-md-6">
+                               <a href="/auth/google/redirect" class="btn btn-white">Sign in to Google</a>
                             </div>
                         </div>
                     </form>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\Google\GoogleController;
 use App\Http\Controllers\HealthRecordsController;
 use App\Models\Bill;
 use App\Models\Meet;
@@ -26,6 +27,9 @@ use Dompdf\Options;
 Route::get('/', function () {
     return view('landing.index');
 });
+
+Route::get('auth/google/redirect', [GoogleController::class, 'redirectToGoogle'])->name('google.redirect');
+Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback'])->name('google.callback');
 
 Route::get('/generate-pdf', function () {
     $pdf = new Dompdf();
@@ -77,15 +81,22 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/update-bill-status/{id}', [DashboardController::class, 'updateBill']);
-
     Route::get('/patient-bills', function(){
-        $patients = Patient::where('user_id',auth()->user()->id)->get();
-        $biils = [];
-        foreach($patients as $patient){
+        $user_id = auth()->user()->id;
+        $patients = Patient::where('user_id', $user_id)->get();
+        // Initialize an empty array to store patient names and their corresponding bills
+        $patientBills = [];
+        foreach ($patients as $patient) {
             $bills = Bill::where('patient_id', $patient->id)->get();
+            // Append patient name and bills to the array
+            $patientBills[] = [
+                'patient' => $patient->name,
+                'bills' => $bills,
+            ];
         }
-        return view('user.patientBill',compact('bills'));
+        return view('user.patientBill', compact('patientBills'));
     });
+    
 
     Route::get('/pre-admit-concern', function () {
         $data = Patient::all()->where("user_id", auth()->user()->id);

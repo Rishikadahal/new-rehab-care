@@ -34,36 +34,34 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($bills as $d)
+            @foreach($patientBills as $d)
+            @foreach($d['bills'] as $bill)
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    {{$d->patient_id}}
+                    {{$d['patient']}}
                 </th>
                 <td class="px-6 py-4">
-                    {{$d->particular}}
-
+                    {{$bill->particular}}
                 </td>
                 <td class="px-6 py-4">
-                    {{$d->bill_amount}}
-
+                    {{$bill->bill_amount}}
                 </td>
                 <td class="px-6 py-4">
-                    @if($d->bill_status == '2')
+                    @if($bill->bill_status == '2')
                     <span class="badge bg-danger">Unpaid</span>
                     @else
-                    <span class="badge bg-success">paid</span>
+                    <span class="badge bg-success">Paid</span>
                     @endif
                 </td>
                 <td>
-                    @if($d->bill_status == '2')
-                    <button id="payment-button" data-bill-amount="{{$d->bill_amount}}" data-bill-id="{{$d->id}}" class="mt-3 btn text-white payment-btn" style="background-color: #5E338D;">Pay with Khalti</button>
+                    @if($bill->bill_status == '2')
+                    <button id="payment-button" data-bill-amount="{{$bill->bill_amount}}" data-bill-id="{{$bill->id}}" class="mt-3 btn text-white payment-btn" style="background-color: #5E338D;">Pay with Khalti</button>
                     @else
                     -
                     @endif
                 </td>
-
-
             </tr>
+            @endforeach
             @endforeach
         </tbody>
     </table>
